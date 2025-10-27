@@ -17,9 +17,9 @@ RE_BT_ADDR = re.compile(r'(0x[0-9a-fA-F]+)\s+.+$')
 RE_CURRENT_INSTR = re.compile(r'^=>\s(0x[0-9a-fA-F]+)(.+)?:\s+(\S.+)')
 RE_FRAME_0 = re.compile(r'^#0\s+(0x[0-9a-fA-F]+)\s.+')
 RE_MAPPED_FRAME = re.compile(
-    r'(0x[0-9a-fA-F]+)\s+(0x[0-9a-fA-F]+)\s+0x[0-9a-fA-F]+\s+0(x[0-9a-fA-F]+)?\s+(/.+)')
+    r'^\s*(0x[0-9A-Fa-f]+)\s+(0x[0-9A-Fa-f]+)\s+0x[0-9A-Fa-f]+\s+((?:0x0)|(?:0x[0-9A-Fa-f]+\s+[rwxps-]*x[rwxps-]*))\s+(/.+)\s*$')
 RE_VDSO = re.compile(
-    r'(0x[0-9a-fA-F]+)\s+(0x[0-9a-fA-F]+)\s+0x[0-9a-fA-F]+\s+0(x0)?\s+(\[vdso\])')
+    r'(0x[0-9a-fA-F]+)\s+(0x[0-9a-fA-F]+)\s+0x[0-9a-fA-F]+\s+((?:0x0)|(?:0x[0-9A-Fa-f]+\s+[rwxps-]*x[rwxps-]*))\s+(\[vdso\])')
 RE_RETURN_ADDR = re.compile(r'^#1\s.(0x[0-9a-fA-F]+)\s')
 
 
