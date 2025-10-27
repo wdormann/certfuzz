@@ -25,8 +25,8 @@ class WatchDog:
 
         # we're just going to overwrite /etc/watchdog.conf
         # hope that's okay
-        self.template = 'sudo sh -c "echo file={} > /etc/watchdog.conf'
-        self.template += ' && echo change={} >> /etc/watchdog.conf'
+        self.template = 'sudo sh -c "echo test-binary = /home/fuzz/bff/check_watchdog.sh > /etc/watchdog.conf'
+        self.template += ' && echo interval = 50 >> /etc/watchdog.conf'
         self.template += ' && /etc/init.d/watchdog restart"'
 
         self.cmdline = None
