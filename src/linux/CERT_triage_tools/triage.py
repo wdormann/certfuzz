@@ -54,6 +54,7 @@
 A simple batch wrapper script for the CERT 'exploitable' GDB extension.
 '''
 
+from __future__ import print_function
 from optparse import OptionParser
 from string import Template
 import subprocess
@@ -64,7 +65,8 @@ import warnings
 import sys
 
 # allows for un-pickling of exploitable's Classification objects
-sys.path.append("./exploitable")
+file_path = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(os.path.join(file_path, "exploitable"))
 
 class TriagedStates(list):
     '''
@@ -110,7 +112,8 @@ class Triager(object):
     An object that can triage a set of inferior invocations via calls to
     GDB.
     '''
-    gdb_cmd = "gdb --batch -ex \"source exploitable/exploitable.py\" " +\
+    exploitable_py = os.path.normpath(os.path.join(file_path, 'exploitable/exploitable.py'))
+    gdb_cmd = "gdb --batch -ex \"source " + exploitable_py + "\" " +\
                 "-ex run -ex \"exploitable -p %s\" --args"
     tmp_file = "/tmp/triage.pkl"
     verbose = False
